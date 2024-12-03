@@ -20,14 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <AnimatedLines />
-        <BackgroundWebs />
-        <CornerWeb />
-        <WebEffect />
-        <FloatingIcons />
-        {children}
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} min-h-screen relative overflow-x-hidden`}>
+        <div className="fixed inset-0 z-0">
+          <AnimatedLines />
+          <BackgroundWebs />
+          <CornerWeb />
+          <WebEffect />
+          <FloatingIcons />
+        </div>
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );
