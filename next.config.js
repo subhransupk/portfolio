@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: false,
+    domains: ['cdn.jsdelivr.net'],
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -9,7 +10,8 @@ const nextConfig = {
         pathname: '/gh/devicons/devicon/icons/**',
       }
     ]
-  }
+  },
+  output: 'standalone'
 };
 
 module.exports = nextConfig; 
