@@ -7,7 +7,11 @@ import CornerWeb from "./components/CornerWeb";
 import FloatingIcons from "./components/FloatingIcons";
 import WebEffect from "./components/WebEffect";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: "Subhransu | Portfolio",
@@ -20,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} min-h-screen relative overflow-x-hidden`}>
-        <div className="fixed inset-0 z-0">
+    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+      <body className={`${inter.className} min-h-screen relative overflow-x-hidden bg-[#0a0a0a] text-[#ededed]`}>
+        <div className="fixed inset-0 z-0 pointer-events-none">
           <AnimatedLines />
           <BackgroundWebs />
           <CornerWeb />

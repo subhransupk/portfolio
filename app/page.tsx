@@ -8,33 +8,33 @@ import TechStack from './components/TechStack';
 
 export default function Home() {
   return (
-    <main className="relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section className="min-h-screen flex items-center justify-center">
+    <main className="relative w-full min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <section className="min-h-screen flex items-center justify-center py-20 w-full">
           <HeroContent />
         </section>
         
-        <section className="py-20">
+        <section className="py-20 w-full rounded-lg">
           <AboutMe />
         </section>
         
-        <section className="py-20 bg-black/30">
+        <section className="py-20 w-full bg-black/30 backdrop-blur-sm rounded-lg">
           <Services />
         </section>
         
-        <section className="py-20">
+        <section className="py-20 w-full rounded-lg">
           <Portfolio />
         </section>
         
-        <section className="py-20 bg-black/30">
+        <section className="py-20 w-full bg-black/30 backdrop-blur-sm rounded-lg">
           <TechStack />
         </section>
         
-        <section className="py-20">
+        <section className="py-20 w-full rounded-lg">
           <Testimonials />
         </section>
         
-        <section className="py-20 bg-black/30">
+        <section className="py-20 w-full bg-black/30 backdrop-blur-sm rounded-lg">
           <Contact />
         </section>
       </div>
