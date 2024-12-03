@@ -196,90 +196,84 @@ const Contact = () => {
                                 )}
                             </AnimatePresence>
 
-                            <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label htmlFor="name" className="block text-cyan-400 mb-2">Name *</label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="email" className="block text-cyan-400 mb-2">Email *</label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
-                                        />
-                                    </div>
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div>
+                                    <label htmlFor="name" className="block text-cyan-400 mb-2">Name</label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        autoComplete="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
+                                    />
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label htmlFor="mobile" className="block text-cyan-400 mb-2">Mobile Number</label>
-                                        <input
-                                            type="tel"
-                                            id="mobile"
-                                            name="mobile"
-                                            value={formData.mobile}
-                                            onChange={handleChange}
-                                            className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="subject" className="block text-cyan-400 mb-2">Subject</label>
-                                        <input
-                                            type="text"
-                                            id="subject"
-                                            name="subject"
-                                            value={formData.subject}
-                                            onChange={handleChange}
-                                            className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
-                                            readOnly
-                                        />
-                                    </div>
+                                <div>
+                                    <label htmlFor="email" className="block text-cyan-400 mb-2">Email</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        autoComplete="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
+                                    />
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label htmlFor="projectType" className="block text-cyan-400 mb-2">Project Type</label>
-                                        <select
-                                            id="projectType"
-                                            name="projectType"
-                                            value={formData.projectType}
-                                            onChange={handleChange}
-                                            className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
-                                        >
-                                            <option value="">Select Type</option>
-                                            <option value="web">Web Development</option>
-                                            <option value="mobile">Mobile App</option>
-                                            <option value="ai">AI Integration</option>
-                                            <option value="saas">SaaS Development</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label htmlFor="budget" className="block text-cyan-400 mb-2">Budget Range</label>
-                                        <select
-                                            id="budget"
-                                            name="budget"
-                                            value={formData.budget}
-                                            onChange={handleChange}
-                                            className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
-                                        >
-                                            <option value="">Select Range</option>
-                                            <option value="small">$1,000 - $5,000</option>
-                                            <option value="medium">$5,000 - $10,000</option>
-                                            <option value="large">$10,000+</option>
-                                        </select>
-                                    </div>
+                                <div>
+                                    <label htmlFor="phone" className="block text-cyan-400 mb-2">Phone (Optional)</label>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        autoComplete="tel"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="projectType" className="block text-cyan-400 mb-2">Project Type</label>
+                                    <select
+                                        id="projectType"
+                                        name="projectType"
+                                        autoComplete="off"
+                                        value={formData.projectType}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
+                                    >
+                                        <option value="">Select a project type</option>
+                                        <option value="website">Website</option>
+                                        <option value="mobile-app">Mobile App</option>
+                                        <option value="ai-integration">AI Integration</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="budget" className="block text-cyan-400 mb-2">Budget Range</label>
+                                    <select
+                                        id="budget"
+                                        name="budget"
+                                        autoComplete="off"
+                                        value={formData.budget}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors"
+                                    >
+                                        <option value="">Select your budget range</option>
+                                        <option value="<5k">Less than $5,000</option>
+                                        <option value="5k-10k">$5,000 - $10,000</option>
+                                        <option value="10k-20k">$10,000 - $20,000</option>
+                                        <option value=">20k">More than $20,000</option>
+                                    </select>
                                 </div>
 
                                 <div>
@@ -287,9 +281,11 @@ const Contact = () => {
                                     <textarea
                                         id="message"
                                         name="message"
+                                        autoComplete="off"
                                         value={formData.message}
                                         onChange={handleChange}
                                         rows={4}
+                                        required
                                         className="w-full bg-black/50 border-2 border-cyan-500/30 rounded-lg px-4 py-2 text-white focus:border-pink-500 focus:outline-none transition-colors resize-none"
                                     />
                                 </div>
