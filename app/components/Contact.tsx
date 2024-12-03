@@ -11,12 +11,20 @@ interface Notification {
     message: string;
 }
 
+interface FormData {
+    name: string;
+    email: string;
+    phone: string;
+    projectType: string;
+    budget: string;
+    message: string;
+}
+
 const Contact = () => {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
-        mobile: '',
-        subject: 'Contact Form',
+        phone: '',
         projectType: '',
         budget: '',
         message: ''
@@ -61,32 +69,23 @@ const Contact = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (isSubmitting) return;
-
-        if (!validateForm()) return;
-
         setIsSubmitting(true);
+
         try {
             const success = await sendToGoogleSheets({
-                name: formData.name,
-                email: formData.email,
-                phone: formData.mobile,
-                projectType: formData.projectType,
-                budget: formData.budget,
-                message: formData.message,
-                source: 'Contact Form'
+                ...formData,
+                source: 'Portfolio Website'
             });
 
             if (success) {
                 setNotification({
                     type: 'success',
-                    message: "Thwip! Message sent successfully! I'll swing by your inbox soon! 🕸️"
+                    message: 'Thanks for reaching out! I\'ll get back to you soon! 🕸️'
                 });
                 setFormData({
                     name: '',
                     email: '',
-                    mobile: '',
-                    subject: 'Contact Form',
+                    phone: '',
                     projectType: '',
                     budget: '',
                     message: ''
@@ -94,27 +93,29 @@ const Contact = () => {
             } else {
                 setNotification({
                     type: 'error',
-                    message: "My web shooter jammed! Please try again or use the chat bot! 🕷️"
+                    message: 'Oops! Something went wrong. Please try again or email me directly.'
                 });
             }
         } catch (error) {
-            console.error('Error submitting form:', error);
+            console.error('Form submission error:', error);
             setNotification({
                 type: 'error',
-                message: "My web shooter jammed! Please try again or use the chat bot! 🕷️"
+                message: 'Oops! Something went wrong. Please try again or email me directly.'
             });
         } finally {
             setIsSubmitting(false);
             // Clear notification after 5 seconds
-            setTimeout(() => setNotification(null), 5000);
+            setTimeout(() => {
+                setNotification(null);
+            }, 5000);
         }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setFormData({
-            ...formData,
+        setFormData(prev => ({
+            ...prev,
             [e.target.name]: e.target.value
-        });
+        }));
     };
 
     return (
@@ -300,8 +301,8 @@ const Contact = () => {
                                             ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                                 >
                                     {isSubmitting ? (
-                                        <span className="inline-flex items-center">
-                                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <span className="inline-flex items-center justify-center">
+                                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                             </svg>
